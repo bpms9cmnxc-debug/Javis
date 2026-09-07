@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>de</string>
+	<key>CFBundleDisplayName</key>
+	<string>Javis</string>
+	<key>CFBundleExecutable</key>
+	<string>Javis</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleIdentifier</key>
+	<string>app.javis.macos</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Javis</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>15.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Javis braucht das Mikrofon, damit Wispr die Sprache aufnehmen und an LM Studio übergeben kann.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Falls Wispr nicht läuft, nutzt Javis die integrierte Spracherkennung als Eingabe.</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Javis steuert Wispr und LM Studio im Hintergrund und hält deren Fenster verborgen.</string>
+	<key>NSAudioCaptureUsageDescription</key>
+	<string>Javis nimmt Sprache nur während einer aktiven Sitzung auf.</string>
+</dict>
+</plist>

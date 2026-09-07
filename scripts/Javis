@@ -1,0 +1,31 @@
+#!/bin/bash
+# Javis bootstrap — runs the compiled binary, or builds it once with swiftc.
+set -euo pipefail
+HERE="$(cd "$(dirname "$0")" && pwd)"
+CORE="$HERE/JavisCore"
+SRC="$HERE/../Resources/Sources"
+
+if [[ -x "$CORE" ]]; then
+  exec "$CORE" "$@"
+fi
+
+if ! command -v swiftc >/dev/null 2>&1; then
+  osascript -e 'display dialog "Javis braucht die Xcode Command Line Tools (swiftc), oder den fertigen GitHub-Release-Build." buttons {"OK"} default button 1' >/dev/null 2>&1 || true
+  open "https://github.com/bpms9cmnxc-debug/Javis/releases"
+  exit 1
+fi
+
+SDK="$(xcrun --sdk macosx --show-sdk-path 2>/dev/null || true)"
+ARCH="$(uname -m)"
+TARGET="${ARCH}-apple-macos15.0"
+# shellcheck disable=SC2086
+FILES=$(find "$SRC" -name '*.swift' | sort)
+# compiling into Contents/MacOS
+swiftc -parse-as-library -O -o "$CORE" \
+  ${SDK:+-sdk "$SDK"} \
+  -target "$TARGET" \
+  -framework SwiftUI -framework AppKit -framework AVFoundation \
+  -framework ApplicationServices -framework Carbon -framework Speech \
+  $FILES
+chmod +x "$CORE"
+exec "$CORE" "$@"
